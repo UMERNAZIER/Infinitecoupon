@@ -121,6 +121,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .pagination button:disabled { color: #9aa69f; cursor: not-allowed; }
 
 .blog-grid { display: grid; gap: 0.9rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.home-blog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .blog-card, .contact-card { background: #fff; border: 1px solid #e0e6e2; border-radius: 0.45rem; padding: 1.2rem; }
 .blog-card h2 { color: #17251e; font-size: 1.15rem; line-height: 1.35; margin: 0.6rem 0 0.45rem; }
 .blog-card h2 a:hover { color: #08734e; }
@@ -227,6 +228,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .store-grid, .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .store-directory-grid, .category-directory-grid, .coupon-grid--listing { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .home-blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
   .site-header__inner { gap: 0.55rem 0.8rem; grid-template-columns: minmax(0, 1fr) auto; padding: 0.65rem 1rem; }
@@ -254,7 +256,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .home-section { padding: 2rem 1rem; }
   .home-section__heading { align-items: flex-start; gap: 0.8rem; }
   .coupon-grid, .store-grid, .category-grid { grid-template-columns: 1fr; }
-  .store-directory-grid, .category-directory-grid, .coupon-grid--listing, .blog-grid, .contact-grid { grid-template-columns: 1fr; }
+  .store-directory-grid, .category-directory-grid, .coupon-grid--listing, .blog-grid, .contact-grid, .home-blog-grid { grid-template-columns: 1fr; }
   .coupon-card--compact { min-height: 0; }
   .coupon-card__action { padding-top: 0.75rem; }
   .coupon-card--list { flex-direction: column; }

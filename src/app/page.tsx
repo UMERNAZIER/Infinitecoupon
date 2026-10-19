@@ -9,6 +9,7 @@ import {
 import CouponCard from '@/components/CouponCard';
 import StoreCard from '@/components/StoreCard';
 import CategoryCard from '@/components/CategoryCard';
+import { blogPosts } from '@/lib/blog';
 
 export default function Home() {
   const allCoupons = getAllCoupons();
@@ -103,6 +104,26 @@ export default function Home() {
         </div>
         <div className="category-grid">
           {categories.slice(0, 8).map((category) => <CategoryCard key={category.id} category={category} />)}
+        </div>
+      </section>
+
+      <section className="home-section home-section--blog">
+        <div className="home-section__heading">
+          <div>
+            <p className="eyebrow">The smarter shopping edit</p>
+            <h2>Tips from the blog</h2>
+          </div>
+          <Link className="section-link" href="/blog">More shopping tips <span aria-hidden="true">→</span></Link>
+        </div>
+        <div className="blog-grid home-blog-grid">
+          {blogPosts.slice(0, 3).map((post) => (
+            <article className="blog-card" key={post.slug}>
+              <p className="eyebrow">{post.category}</p>
+              <h2><Link href={`/blog/${post.slug}`}>{post.title}</Link></h2>
+              <p>{post.excerpt}</p>
+              <Link className="blog-card__link" href={`/blog/${post.slug}`}>Read article <span aria-hidden="true">→</span></Link>
+            </article>
+          ))}
         </div>
       </section>
     </div>
