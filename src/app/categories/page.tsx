@@ -11,14 +11,15 @@ export default function CategoriesPage() {
   const categories = getAllCategories();
 
   return (
-    <main className="min-h-screen bg-slate-50 py-12 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-10 text-center md:text-left">
-          <h1 className="text-4xl font-bold text-slate-900 font-poppins mb-3">Browse by Category</h1>
-          <p className="text-slate-600 text-lg">Find the best deals in your favorite categories</p>
-        </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <main className="page-shell directory-shell">
+      <div>
+        <header className="page-heading">
+          <p className="eyebrow">Browse by what you need</p>
+          <h1>Shop by category</h1>
+          <p>Explore offers and product searches across 50 shopping categories.</p>
+        </header>
+
+        <div className="category-grid category-directory-grid">
           {categories.map(category => (
             <CategoryCard key={category.id} category={category} />
           ))}

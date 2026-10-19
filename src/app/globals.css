@@ -20,6 +20,11 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --font-heading: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  --font-body: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+}
+
 body {
   font-family: var(--font-body);
   color: #334155;
@@ -32,6 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 
 button, input, select { font: inherit; }
 a { text-decoration: none; }
+.sr-only { clip: rect(0, 0, 0, 0); clip-path: inset(50%); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px; }
 button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
   outline: 3px solid rgb(5 150 105 / 35%);
   outline-offset: 2px;
@@ -92,6 +98,59 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .site-header__menu { align-items: center; background: transparent; border: 0; color: #334155; cursor: pointer; display: none; justify-content: center; padding: 0.4rem; }
 .site-header__mobile-nav { background: white; border-top: 1px solid #edf0ee; box-shadow: 0 8px 14px rgb(15 23 42 / 8%); display: flex; flex-direction: column; padding: 0.5rem 1rem 0.75rem; position: absolute; right: 0; top: 100%; width: 100%; }
 
+.coupon-grid--listing { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.coupon-filters { align-items: center; display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 0 0 1.2rem; }
+.coupon-filters .catalog-search { flex: 1 1 270px; }
+.coupon-filters .catalog-count { margin: 0 0 0 auto; }
+.coupon-card--compact { min-height: 190px; }
+.coupon-card--compact .coupon-card__title { margin-top: 0.7rem; }
+.coupon-card--compact .coupon-card__action { padding-bottom: 0.85rem; }
+.coupon-card--compact.coupon-card--no-image .coupon-card__topline { min-height: 2.45rem; }
+
+.directory-shell { max-width: 1440px; }
+.store-directory-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.category-directory-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.store-products-section, .category-products-section { margin-top: 2.8rem; padding-top: 2rem; border-top: 1px solid #e6ebe8; }
+.store-products-section .home-section__heading, .category-products-section .home-section__heading { margin-bottom: 1rem; }
+.product-card__visual { height: 112px; }
+.product-card__body { padding: 0.72rem; }
+.product-card__body > a:first-of-type { font-size: 0.8rem; }
+
+.pagination { align-items: center; color: #5d6c64; display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; }
+.pagination button { background: #fff; border: 1px solid #d6dfda; border-radius: 0.35rem; color: #08734e; cursor: pointer; font-size: 0.86rem; font-weight: 650; padding: 0.55rem 0.85rem; }
+.pagination button:disabled { color: #9aa69f; cursor: not-allowed; }
+
+.blog-grid { display: grid; gap: 0.9rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.blog-card, .contact-card { background: #fff; border: 1px solid #e0e6e2; border-radius: 0.45rem; padding: 1.2rem; }
+.blog-card h2 { color: #17251e; font-size: 1.15rem; line-height: 1.35; margin: 0.6rem 0 0.45rem; }
+.blog-card h2 a:hover { color: #08734e; }
+.blog-card > p:not(.eyebrow) { color: #65736b; font-size: 0.9rem; line-height: 1.55; margin: 0 0 0.9rem; }
+.blog-card__link, .contact-link { align-items: center; color: #08734e; display: inline-flex; font-size: 0.86rem; font-weight: 700; gap: 0.35rem; }
+.article-shell { max-width: 920px; }
+.article-back { color: #08734e; display: inline-block; font-size: 0.88rem; font-weight: 650; margin-bottom: 1.25rem; }
+.article-content { max-width: 760px; }
+.article-content h1 { color: #13221b; font-size: clamp(2rem, 4vw, 2.75rem); letter-spacing: -0.04em; line-height: 1.12; margin: 0.5rem 0 0.8rem; }
+.article-content p:not(.eyebrow) { color: #536259; font-size: 1rem; line-height: 1.75; margin: 0 0 1.1rem; }
+.article-content .article-lede { color: #31443a; font-size: 1.1rem; }
+.article-content .section-link { display: inline-block; margin-top: 0.5rem; }
+.legal-shell { max-width: 1000px; }
+.legal-content { max-width: 780px; }
+.legal-content h2 { color: #17251e; font-size: 1.1rem; margin: 1.65rem 0 0.45rem; }
+.legal-content p { color: #55645c; font-size: 0.94rem; line-height: 1.72; margin: 0 0 0.85rem; }
+.legal-note { background: #f3f7f4; border-left: 3px solid #08734e; color: #45564c; font-size: 0.88rem; line-height: 1.55; margin-top: 2rem; max-width: 780px; padding: 0.85rem 1rem; }
+.contact-grid { display: grid; gap: 0.9rem; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 900px; }
+.contact-card > svg { color: #08734e; }
+.contact-card h2 { color: #17251e; font-size: 1.06rem; margin: 0.65rem 0 0.35rem; }
+.contact-card p { color: #617067; font-size: 0.88rem; line-height: 1.55; margin: 0 0 0.85rem; }
+.contact-card .contact-card__note { color: #8a5b18; font-size: 0.78rem; margin: 0.75rem 0 0; }
+.contact-retailer { color: #64716a; font-size: 0.9rem; margin: 1.25rem 0; }
+
+@media (max-width: 1100px) {
+  .site-header__inner { gap: 0.75rem; grid-template-columns: 180px minmax(0, 1fr) 330px; }
+  .site-header__nav { gap: 0; }
+  .site-header__nav a { font-size: 0.81rem; padding-left: 0.38rem; padding-right: 0.38rem; }
+}
+
 .home-page { background: #fff; }
 .home-hero { background: linear-gradient(112deg, #17372e 0%, #0b5940 58%, #08734e 100%); border-bottom: 1px solid #0a5039; }
 .home-hero__inner { margin: 0 auto; max-width: 1180px; padding: 3.1rem 1.5rem 2.2rem; }
@@ -124,6 +183,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .coupon-card__brand { align-items: center; display: flex; gap: 0.6rem; min-width: 0; }
 .brand-logo { align-items: center; background: #fff; border: 1px solid #e5e9e7; border-radius: 0.4rem; color: #334155; display: inline-flex; flex: 0 0 auto; height: 2.45rem; justify-content: center; overflow: hidden; width: 2.45rem; }
 .brand-logo__mark { height: 100%; padding: 0.22rem; width: 100%; }
+.brand-logo__image { height: 100%; object-fit: contain; padding: 0.25rem; width: 100%; }
 .coupon-card__brand-copy { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
 .coupon-card__store { color: #475569; font-size: 0.82rem; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .coupon-card__type { font-size: 0.68rem; line-height: 1.1; }
@@ -166,6 +226,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .coupon-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .store-grid, .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .store-directory-grid, .category-directory-grid, .coupon-grid--listing { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
   .site-header__inner { gap: 0.55rem 0.8rem; grid-template-columns: minmax(0, 1fr) auto; padding: 0.65rem 1rem; }
@@ -193,6 +254,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .home-section { padding: 2rem 1rem; }
   .home-section__heading { align-items: flex-start; gap: 0.8rem; }
   .coupon-grid, .store-grid, .category-grid { grid-template-columns: 1fr; }
+  .store-directory-grid, .category-directory-grid, .coupon-grid--listing, .blog-grid, .contact-grid { grid-template-columns: 1fr; }
   .coupon-card--compact { min-height: 0; }
   .coupon-card__action { padding-top: 0.75rem; }
   .coupon-card--list { flex-direction: column; }

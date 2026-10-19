@@ -11,14 +11,15 @@ export default function StoresPage() {
   const stores = getAllStores().sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <main className="min-h-screen bg-slate-50 py-12 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-10 text-center md:text-left">
-          <h1 className="text-4xl font-bold text-slate-900 font-poppins mb-3">All Stores</h1>
-          <p className="text-slate-600 text-lg">Browse coupons from your favorite brands</p>
-        </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <main className="page-shell directory-shell">
+      <div>
+        <header className="page-heading">
+          <p className="eyebrow">Browse by retailer</p>
+          <h1>All stores</h1>
+          <p>Find store offers and browse product searches from popular retailers.</p>
+        </header>
+
+        <div className="store-grid store-directory-grid">
           {stores.map(store => (
             <StoreCard key={store.id} store={store} />
           ))}

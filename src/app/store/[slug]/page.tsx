@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Star, ExternalLink } from 'lucide-react';
-import { getAllStores, getStoreBySlug, getCouponsByStore, getAllProducts } from '@/lib/data';
+import { getAllStores, getStoreBySlug, getCouponsByStore, getProductsByStore, getAllCategories } from '@/lib/data';
 import StorePageClient from '@/components/StorePageClient';
 import BrandLogo from '@/components/BrandLogo';
 
@@ -41,7 +41,7 @@ export default async function StorePage({ params }: Props) {
       <div className="bg-white border-b border-slate-200 py-12 px-4">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8">
           <div className="w-32 h-32 bg-slate-100 rounded-2xl flex items-center justify-center p-4 shadow-sm border border-slate-200 flex-shrink-0">
-            <BrandLogo name={store.name} />
+            <BrandLogo name={store.name} logoUrl={store.logo} />
           </div>
           
           <div className="flex-grow text-center md:text-left">
@@ -55,7 +55,7 @@ export default async function StorePage({ params }: Props) {
                 <span className="ml-1 font-semibold text-slate-700">{store.rating}</span>
               </div>
               <span className="text-slate-400">•</span>
-              <span className="text-slate-600">{coupons.length} Active Offers</span>
+              <span className="text-slate-600">{coupons.length} {coupons.length === 1 ? 'listed offer' : 'listed offers'}</span>
             </div>
             
             <p className="text-slate-600 mb-6 max-w-2xl leading-relaxed">
@@ -75,8 +75,8 @@ export default async function StorePage({ params }: Props) {
       </div>
 
       {/* Coupons Section */}
-      <div className="max-w-4xl mx-auto mt-8 px-4">
-        <StorePageClient store={store} initialCoupons={coupons} products={getAllProducts()} />
+      <div className="max-w-6xl mx-auto mt-8 px-4">
+        <StorePageClient store={store} initialCoupons={coupons} products={getProductsByStore(store.id)} categories={getAllCategories()} />
       </div>
     </main>
   );

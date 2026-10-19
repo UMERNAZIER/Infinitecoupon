@@ -10,6 +10,7 @@ interface CouponCardProps {
   coupon: Coupon;
   storeName: string;
   imageUrl?: string;
+  showImage?: boolean;
   variant?: 'compact' | 'list';
 }
 
@@ -22,7 +23,7 @@ function formatExpiryDate(value: string) {
   return `${monthNames[monthIndex]} ${Number(day)}, ${year}`;
 }
 
-export default function CouponCard({ coupon, storeName, imageUrl, variant = 'list' }: CouponCardProps) {
+export default function CouponCard({ coupon, storeName, imageUrl, showImage = true, variant = 'list' }: CouponCardProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
 
@@ -38,7 +39,7 @@ export default function CouponCard({ coupon, storeName, imageUrl, variant = 'lis
 
   return (
     <>
-      <article className={`coupon-card coupon-card--${variant}`}>
+      <article className={`coupon-card coupon-card--${variant}${showImage ? '' : ' coupon-card--no-image'}`}>
         <div className="coupon-card__body">
           <div className="coupon-card__topline">
             <div className="coupon-card__brand">
@@ -50,7 +51,8 @@ export default function CouponCard({ coupon, storeName, imageUrl, variant = 'lis
                 </span>
               </div>
             </div>
-            <div className="coupon-card__visual-wrap">
+            {showImage ? (
+              <div className="coupon-card__visual-wrap">
               {imageUrl && !imageFailed ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img className="coupon-card__product-image" src={imageUrl} alt="" loading="lazy" onError={() => setImageFailed(true)} />
@@ -58,7 +60,10 @@ export default function CouponCard({ coupon, storeName, imageUrl, variant = 'lis
                 <span className="coupon-card__image-fallback" aria-hidden="true"><Package size={20} /></span>
               ) : null}
               <span className="coupon-card__discount">{coupon.discount}</span>
-            </div>
+              </div>
+            ) : (
+              <span className="coupon-card__discount">{coupon.discount}</span>
+            )}
           </div>
 
           <h3 className="coupon-card__title">{coupon.title}</h3>

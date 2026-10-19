@@ -26,7 +26,7 @@ export default function ProductCard({
         ) : (
           <div className="product-card__image-fallback" aria-hidden="true"><Package size={28} strokeWidth={1.6} /></div>
         )}
-        <BrandLogo name={store.name} />
+        <BrandLogo name={store.name} logoUrl={store.logo} />
       </div>
       <div className="product-card__body">
         <div className="product-card__meta">

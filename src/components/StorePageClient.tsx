@@ -1,17 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { Coupon, Product, Store } from '@/lib/data';
+import { Category, Coupon, Product, Store } from '@/lib/data';
 import CouponCard from '@/components/CouponCard';
 import FilterTabs from '@/components/FilterTabs';
+import ProductCard from '@/components/ProductCard';
 
 type Props = {
   store: Store;
   initialCoupons: Coupon[];
   products: Product[];
+  categories: Category[];
 };
 
-export default function StorePageClient({ store, initialCoupons, products }: Props) {
+export default function StorePageClient({ store, initialCoupons, products, categories }: Props) {
   const [activeTab, setActiveTab] = useState('All');
   
   const filteredCoupons = initialCoupons.filter(coupon => {
@@ -32,7 +34,7 @@ export default function StorePageClient({ store, initialCoupons, products }: Pro
               key={coupon.id} 
               coupon={coupon} 
               storeName={store.name} 
-              imageUrl={coupon.imageUrl ?? products.find((product) => product.storeId === store.id && product.categoryId === coupon.categoryId)?.imageUrl}
+              showImage={false}
             />
           ))
         ) : (
@@ -41,6 +43,22 @@ export default function StorePageClient({ store, initialCoupons, products }: Pro
           </div>
         )}
       </div>
+
+      <section className="store-products-section">
+        <div className="home-section__heading">
+          <div>
+            <p className="eyebrow">Browse the catalog</p>
+            <h2>Popular products at {store.name}</h2>
+          </div>
+          <span className="catalog-count">{products.length} picks</span>
+        </div>
+        <div className="products-grid">
+          {products.map((product) => {
+            const category = categories.find((item) => item.id === product.categoryId);
+            return category ? <ProductCard key={product.id} product={product} category={category} store={store} /> : null;
+          })}
+        </div>
+      </section>
     </div>
   );
 }

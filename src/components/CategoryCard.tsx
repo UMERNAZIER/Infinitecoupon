@@ -1,17 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
 import { Category } from '@/lib/data';
-import { Monitor, Shirt, Heart, Home, UtensilsCrossed, Plane, Dumbbell, ShoppingBag } from 'lucide-react';
+import {
+  Baby, CarFront, Coffee, CookingPot, Droplets, Dumbbell, Footprints, Gamepad2, Gem, Headphones, Heart,
+  Home, Keyboard, Lamp, Laptop, Luggage, Monitor, Mountain, PawPrint, Pizza, Plane, Printer, Shirt,
+  ShoppingBag, ShoppingBasket, Smartphone, Sofa, Sparkles, Tablet, Tent, ToyBrick, Tv, UtensilsCrossed, Watch, Wrench, Wind,
+} from 'lucide-react';
 
 const iconMap: Record<string, React.ElementType> = {
-  Monitor,
-  Shirt,
-  Heart,
-  Home,
-  UtensilsCrossed,
-  Plane,
-  Dumbbell,
-  ShoppingBag
+  Monitor, Shirt, Heart, Home, UtensilsCrossed, Plane, Dumbbell, ShoppingBag, Baby, CarFront, Coffee,
+  CookingPot, Droplets, Footprints, Gamepad2, Gem, Headphones, Keyboard, Lamp, Laptop, Luggage, Mountain,
+  PawPrint, Pizza, Printer, ShoppingBasket, Smartphone, Sofa, Sparkles, Tablet, Tent, ToyBrick, Tv, Watch,
+  Wrench, Wind,
 };
 
 interface CategoryCardProps {

@@ -13,7 +13,7 @@ export default function ProductsPage() {
       <div className="page-heading">
         <p className="eyebrow">Browse the catalog</p>
         <h1>Products</h1>
-        <p>Explore products by category and browse related store offers.</p>
+        <p>Browse popular product searches by category and retailer. Links open the store’s current catalog.</p>
       </div>
       <ProductsCatalog products={getAllProducts()} categories={getAllCategories()} stores={getAllStores()} />
     </main>

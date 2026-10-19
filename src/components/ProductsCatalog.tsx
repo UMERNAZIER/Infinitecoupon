@@ -16,6 +16,8 @@ export default function ProductsCatalog({
 }) {
   const [query, setQuery] = useState('');
   const [categoryId, setCategoryId] = useState('all');
+  const [page, setPage] = useState(1);
+  const pageSize = 24;
   const visibleProducts = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
     return products.filter((product) => {
@@ -25,7 +27,10 @@ export default function ProductsCatalog({
         `${product.name} ${product.description} ${storeName}`.toLowerCase().includes(normalizedQuery);
       return categoryMatches && queryMatches;
     });
-  }, [products, query, categoryId]);
+  }, [products, stores, query, categoryId]);
+  const pageCount = Math.max(1, Math.ceil(visibleProducts.length / pageSize));
+  const currentPage = Math.min(page, pageCount);
+  const pageProducts = visibleProducts.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   return (
     <>
@@ -33,11 +38,11 @@ export default function ProductsCatalog({
         <label className="catalog-search">
           <Search size={19} aria-hidden="true" />
           <span className="sr-only">Search products</span>
-          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search products" />
+          <input value={query} onChange={(event) => { setQuery(event.target.value); setPage(1); }} placeholder="Search products" />
         </label>
         <label className="catalog-select">
           <span className="sr-only">Filter by category</span>
-          <select value={categoryId} onChange={(event) => setCategoryId(event.target.value)}>
+          <select value={categoryId} onChange={(event) => { setCategoryId(event.target.value); setPage(1); }}>
             <option value="all">All categories</option>
             {categories.map((category) => <option key={category.id} value={category.id}>{category.name}</option>)}
           </select>
@@ -46,7 +51,7 @@ export default function ProductsCatalog({
       </div>
       {visibleProducts.length ? (
         <div className="products-grid">
-          {visibleProducts.map((product) => {
+          {pageProducts.map((product) => {
             const category = categories.find((item) => item.id === product.categoryId);
             const store = stores.find((item) => item.id === product.storeId);
             return category && store ? <ProductCard key={product.id} product={product} category={category} store={store} /> : null;
@@ -54,6 +59,13 @@ export default function ProductsCatalog({
         </div>
       ) : (
         <div className="empty-state">No products match that search. Try another keyword or category.</div>
+      )}
+      {pageCount > 1 && (
+        <nav className="pagination" aria-label="Product pages">
+          <button type="button" onClick={() => setPage((value) => Math.max(1, value - 1))} disabled={currentPage === 1}>Previous</button>
+          <span>Page {currentPage} of {pageCount}</span>
+          <button type="button" onClick={() => setPage((value) => Math.min(pageCount, value + 1))} disabled={currentPage === pageCount}>Next</button>
+        </nav>
       )}
     </>
   );

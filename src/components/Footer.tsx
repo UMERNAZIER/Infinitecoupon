@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import SiteLogo from '@/components/SiteLogo';
+import { getAllCategories } from '@/lib/data';
 
 export default function Footer() {
+  const topCategories = getAllCategories().slice(0, 4);
   return (
     <footer className="bg-midnight text-slate-300 mt-auto">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -42,6 +44,8 @@ export default function Footer() {
                   Products
                 </Link>
               </li>
+              <li><Link href="/coupons" className="text-sm hover:text-white transition-colors">Coupons &amp; deals</Link></li>
+              <li><Link href="/blog" className="text-sm hover:text-white transition-colors">Blog</Link></li>
             </ul>
           </div>
 
@@ -51,26 +55,9 @@ export default function Footer() {
               Top Categories
             </h3>
             <ul className="space-y-3">
-              <li>
-                <Link href="/category/electronics" className="text-sm hover:text-white transition-colors">
-                  Electronics
-                </Link>
-              </li>
-              <li>
-                <Link href="/category/fashion" className="text-sm hover:text-white transition-colors">
-                  Fashion
-                </Link>
-              </li>
-              <li>
-                <Link href="/category/travel" className="text-sm hover:text-white transition-colors">
-                  Travel
-                </Link>
-              </li>
-              <li>
-                <Link href="/category/health-beauty" className="text-sm hover:text-white transition-colors">
-                  Health & Beauty
-                </Link>
-              </li>
+              {topCategories.map((category) => (
+                <li key={category.id}><Link href={`/category/${category.slug}`} className="text-sm hover:text-white transition-colors">{category.name}</Link></li>
+              ))}
             </ul>
           </div>
 
@@ -81,17 +68,17 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#" className="text-sm hover:text-white transition-colors">
+                <Link href="/privacy" className="text-sm hover:text-white transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-sm hover:text-white transition-colors">
+                <Link href="/terms" className="text-sm hover:text-white transition-colors">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-sm hover:text-white transition-colors">
+                <Link href="/contact" className="text-sm hover:text-white transition-colors">
                   Contact Us
                 </Link>
               </li>

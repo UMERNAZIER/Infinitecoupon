@@ -49,7 +49,7 @@ export default function Home() {
               <p className="eyebrow">Worth a look</p>
               <h2>Hot deals</h2>
             </div>
-            <Link className="section-link" href="/search?q=deal">See all deals <span aria-hidden="true">→</span></Link>
+            <Link className="section-link" href="/coupons">See all deals <span aria-hidden="true">→</span></Link>
           </div>
           <div className="coupon-grid">
             {hotDeals.map((coupon) => {
@@ -81,7 +81,7 @@ export default function Home() {
               <p className="eyebrow">{couponCodes.length} codes · {additionalDeals.length} more deals</p>
               <h2>Coupons &amp; promo codes</h2>
             </div>
-            <Link className="section-link" href="/search?q=coupon">Browse all <span aria-hidden="true">→</span></Link>
+            <Link className="section-link" href="/coupons">Browse all <span aria-hidden="true">→</span></Link>
           </div>
           <div className="coupon-grid">
             {couponSectionItems.map((coupon) => {

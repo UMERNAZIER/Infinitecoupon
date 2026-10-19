@@ -131,6 +131,10 @@ export function getProductsByCategory(categoryId: string): Product[] {
   return getAllProducts().filter((product) => product.categoryId === categoryId);
 }
 
+export function getProductsByStore(storeId: string): Product[] {
+  return getAllProducts().filter((product) => product.storeId === storeId);
+}
+
 export function searchCoupons(query: string): Coupon[] {
   const q = query.toLowerCase().trim();
   if (!q) return [];

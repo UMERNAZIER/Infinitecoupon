@@ -1,10 +1,15 @@
-type BrandLogoProps = { name: string };
+type BrandLogoProps = { name: string; logoUrl?: string };
 
-export default function BrandLogo({ name }: BrandLogoProps) {
+export default function BrandLogo({ name, logoUrl }: BrandLogoProps) {
   const brand = name.toLowerCase();
+  const hasCustomMark = ['amazon', 'nike', 'ebay', 'walmart', 'target', 'sephora', 'best buy', 'adidas', "macy's", "domino's pizza", 'booking.com', 'expedia', 'cupshe'].includes(brand);
 
   return (
     <span className={`brand-logo brand-logo--${brand.replace(/[^a-z]+/g, '-')}`} role="img" aria-label={`${name} logo`}>
+      {logoUrl && !hasCustomMark ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img className="brand-logo__image" src={logoUrl} alt="" loading="lazy" />
+      ) : (
       <svg className="brand-logo__mark" viewBox="0 0 64 48" aria-hidden="true">
         {brand === 'amazon' ? (
           <>
@@ -47,6 +52,7 @@ export default function BrandLogo({ name }: BrandLogoProps) {
           <text x="32" y="34" fill="#334155" fontSize="24" fontWeight="700" textAnchor="middle">{name.charAt(0)}</text>
         )}
       </svg>
+      )}
     </span>
   );
 }
