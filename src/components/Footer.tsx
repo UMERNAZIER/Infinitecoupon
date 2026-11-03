@@ -90,17 +90,6 @@ export default function Footer() {
           <p className="text-sm text-slate-400">
             &copy; 2026 Infinite Coupons. All rights reserved.
           </p>
-          <p className="mt-3 text-sm text-slate-400 md:mt-0">
-            Developed by{' '}
-            <a
-              href="https://www.huzaifaameer.com"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="transition-colors hover:text-white"
-            >
-              Huzaifa Ameer
-            </a>
-          </p>
         </div>
       </div>
     </footer>
